@@ -1,1 +1,1 @@
-This is basic python application.
+This is basic python flask application.
