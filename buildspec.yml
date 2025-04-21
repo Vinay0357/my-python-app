@@ -9,7 +9,7 @@ phases:
       - pip install -r requirements.txt
   build:
     commands:
-      - echo Build started on `date`
+      - echo "Build started on $(date)"
       - python app.py
 artifacts:
   files:
