@@ -1,36 +1,36 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: simple-docker-service
-  namespace: default
-  labels:
-    app: simple-docker-service
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: simple-docker-service
-  template:
-    metadata:
-      labels:
-        app: simple-docker-service
-    spec:
-      containers:
-        - name: simple-docker-service
-          image: 160885268642.dkr.ecr.ap-southeast-2.amazonaws.com/simple-docker-service-0aeccb2065ad:latest
-          ports:
-            - containerPort: 5000
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: simple-docker-service
-  namespace: default
-spec:
-  type: LoadBalancer
-  selector:
-    app: simple-docker-service
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 5000
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: simple-docker-service
+#   namespace: default
+#   labels:
+#     app: simple-docker-service
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: simple-docker-service
+#   template:
+#     metadata:
+#       labels:
+#         app: simple-docker-service
+#     spec:
+#       containers:
+#         - name: simple-docker-service
+#           image: 160885268642.dkr.ecr.ap-southeast-2.amazonaws.com/simple-docker-service-0aeccb2065ad:latest
+#           ports:
+#             - containerPort: 5000
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: simple-docker-service
+#   namespace: default
+# spec:
+#   type: LoadBalancer
+#   selector:
+#     app: simple-docker-service
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 5000
