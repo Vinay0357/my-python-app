@@ -17,4 +17,4 @@ def my_func():
   b = 20
   c = a + b
   print(f"The adding of {a} and {b} is: {c}")
-  print("My Fun ends here")
+  print("My Fun ends here V2")
