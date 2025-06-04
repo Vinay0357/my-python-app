@@ -21,3 +21,4 @@ artifacts:
     - imagedefinitions.json
     - config/appspec.yml
     - config/taskdef.json
+    - config/buildspec_prepare_deploy.yml  # Added this line
