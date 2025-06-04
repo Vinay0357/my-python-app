@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  build:
+    commands:
+      # Extract the image URI from imagedefinitions.json
+      - IMAGE_URI=$(jq -r '.[0].imageUri' imagedefinitions.json)
+      # Replace the placeholder in taskdef.json with the new image URI
+      - sed -i "s|<IMAGE_URI>|${IMAGE_URI}|g" config/taskdef.json
+      # Replace the execution role ARN in taskdef.json
+      - sed -i "s|<EXECUTION_ROLE_ARN>|${TASK_EXECUTION_ROLE_ARN}|g" config/taskdef.json
+      # Register the new task definition
+      - TASK_DEF_ARN=$(aws ecs register-task-definition --cli-input-json file://config/taskdef.json --region $AWS_DEFAULT_REGION --query 'taskDefinition.taskDefinitionArn' --output text)
+      # Replace the placeholder in appspec.yml with the new task definition ARN
+      - sed -i "s|<TASK_DEFINITION_ARN>|${TASK_DEF_ARN}|g" config/appspec.yml
+artifacts:
+  files:
+    - config/appspec.yml
+    - config/taskdef.json
