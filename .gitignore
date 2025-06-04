@@ -1,0 +1,30 @@
+# Terraform files and directories
+*.tfstate
+*.tfstate.backup
+*.tfvars
+*.tfplan
+.terraform/
+.terraform.lock.hcl
+
+# Terraform crash logs
+crash.log
+crash.*.log
+
+# Local environment files (optional, in case you use these)
+.env
+.env.local
+
+# macOS and Windows system files (optional, for local development)
+.DS_Store
+Thumbs.db
+
+# Ignore any local Terraform variable files that might contain secrets
+terraform.tfvars
+override.tf
+override.tf.json
+*.tfvars.json
+
+# Ignore any temporary files or directories
+*.bak
+*.swp
+*~
